@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+ <div class="jumbotron text-center">
+    <h1>Welcome </h1>
+    {% if session.logged_in == null %}
+        <a href="/register" class="btn btn-primary btn-lg">Register</a>
+        <a href="/register" class="btn btn-success btn-lg">Log In</a>
+    {%endif%}
+            
+    
+    <p class="lead">This application is Giovanni's Attempt at Building his first Python Flask App using a Youtube Tutorial Which showed the step by step procedure of using Flask along with MySQL. </p>
+</div>
+{% endblock %}

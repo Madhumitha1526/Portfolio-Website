@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div>
+    <h1>     <small>Welcome <span>{{session.username}}</span> </small> </h1>
+
+    <table class="table table-striped">
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Author</td>
+            <td>Date</td>
+            <th></th>
+            <th></th>
+        <tr>
+        {% for article in articles%}
+            <tr>
+                <td>{{article.id}}</td>
+                <td>{{article.title}}</td>
+                <td>{{article.author}}</td>
+                <td>{{article.create_date}}</td>
+                <td><a href="edit_article/{{article.id}}"" class="btn btn-default pull-right">Edit</a></td>
+                <td>
+                <form action="{{url_for('delete_article', id=article.id)}}" method="post">
+                    <input type="hidden" name="_method" value="DELETE"></input>
+                    <input type="submit" value="Delete" class="btn btn-danger"></input>
+                </form>
+                </td>
+            <tr>
+        {% endfor %}
+    </table>
+
+
+
+    <a class='btn btn-success' href='/add_article'> Add Article </a>
+
+    <hr>
+   </div>
+
+    
+{% endblock %}
